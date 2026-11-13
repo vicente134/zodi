@@ -365,17 +365,18 @@
     }
 
     .tile-cta {
-      font-size: clamp(0.62rem, 1.5vw, 0.8rem);
+      font-size: clamp(0.6rem, 1.35vw, 0.78rem);
       font-weight: 700;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       background: rgba(255, 255, 255, 0.24);
       color: #ffffff;
-      padding: 0.28rem clamp(0.45rem, 1.4vw, 0.9rem);
-      border-radius: 999px;
+      padding: 0.28rem clamp(0.35rem, 1.2vw, 0.85rem);
+      border-radius: 14px;
       border: 1.5px solid rgba(255, 255, 255, 0.65);
       transition: all 0.25s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
-      white-space: nowrap;
+      text-align: center;
+      line-height: 1.2;
     }
 
     .element-tile[data-element="fuego"] .tile-cta {
@@ -566,6 +567,26 @@
       color: #ffffff;
       max-width: 34ch;
     }
+
+    .flavor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #ffffff;
+      color: #222222;
+      font-weight: 800;
+      font-size: clamp(0.82rem, 2.3vw, 0.98rem);
+      padding: 0.42rem 1.05rem;
+      border-radius: 999px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+      text-shadow: none;
+      letter-spacing: 0.01em;
+    }
+
+    .detail-stage[data-theme="agua"] .flavor-badge { color: #b81d66; }
+    .detail-stage[data-theme="tierra"] .flavor-badge { color: #c44f0a; }
+    .detail-stage[data-theme="fuego"] .flavor-badge { color: #a87900; }
+    .detail-stage[data-theme="aire"] .flavor-badge { color: #3c8211; }
 
     .trait-pills {
       display: flex;
@@ -924,40 +945,40 @@
     <!-- ROW OF 4 INITIAL ELEMENT BOXES -->
     <section class="elements-row-section" aria-label="Seleccionar elemento">
       <div class="elements-row has-active" id="elements-row">
-        <!-- AGUA -->
+        <!-- AGUA (Rosa) -->
         <article class="element-tile active" data-element="agua" tabindex="0" role="button" aria-pressed="true">
           <img src="assets/title-agua.png" alt="AGUA" class="tile-title-sticker" />
           <div class="tile-char-wrap">
             <img src="assets/char-agua.png" alt="Personaje Agua" class="tile-char-img" />
           </div>
-          <span class="tile-cta">Ver más ✦</span>
+          <span class="tile-cta">🍓🫐 Frutilla y arándanos</span>
         </article>
 
-        <!-- TIERRA -->
+        <!-- TIERRA (Naranja) -->
         <article class="element-tile" data-element="tierra" tabindex="0" role="button" aria-pressed="false">
           <img src="assets/title-tierra.png" alt="TIERRA" class="tile-title-sticker" />
           <div class="tile-char-wrap">
             <img src="assets/char-tierra.png" alt="Personaje Tierra" class="tile-char-img" />
           </div>
-          <span class="tile-cta">Ver más ✦</span>
+          <span class="tile-cta">🥕🍎 Zanahoria y manzana</span>
         </article>
 
-        <!-- FUEGO -->
+        <!-- FUEGO (Amarillo) -->
         <article class="element-tile" data-element="fuego" tabindex="0" role="button" aria-pressed="false">
           <img src="assets/title-fuego.png" alt="FUEGO" class="tile-title-sticker" />
           <div class="tile-char-wrap">
             <img src="assets/char-fuego.png" alt="Personaje Fuego" class="tile-char-img" />
           </div>
-          <span class="tile-cta">Ver más ✦</span>
+          <span class="tile-cta">🥭🌶️ Mango y ají</span>
         </article>
 
-        <!-- AIRE -->
+        <!-- AIRE (Verde) -->
         <article class="element-tile" data-element="aire" tabindex="0" role="button" aria-pressed="false">
           <img src="assets/title-aire.png" alt="AIRE" class="tile-title-sticker" />
           <div class="tile-char-wrap">
             <img src="assets/char-aire.png" alt="Personaje Aire" class="tile-char-img" />
           </div>
-          <span class="tile-cta">Ver más ✦</span>
+          <span class="tile-cta">🍋🌿 Limón y menta</span>
         </article>
       </div>
     </section>
@@ -968,7 +989,7 @@
         <div class="stage-topbar">
           <div class="stage-badge" id="stage-badge">
             <span>✦</span>
-            <span id="stage-element-tag">Elemento Agua · Emoción & Dulzura</span>
+            <span id="stage-element-tag">Elemento Agua · Sabor Frutilla y Arándanos</span>
           </div>
           <div class="stage-controls">
             <button type="button" class="stage-btn" id="btn-prev" title="Elemento anterior">← Anterior</button>
@@ -1000,7 +1021,7 @@
             <p class="connection-text" id="char-behavior"></p>
           </div>
           <div class="connection-box">
-            <div class="connection-label">🍹 Esencia de su bebida</div>
+            <div class="connection-label">🍹 Sabor & Esencia de su bebida</div>
             <p class="connection-text" id="char-drink"></p>
           </div>
           <div class="connection-box">
@@ -1014,7 +1035,7 @@
     <!-- INTERACTIVE ZODIAC SIGN SELECTOR -->
     <section class="zodiac-finder">
       <h3>✨ ¿De qué signo sos? ✨</h3>
-      <p>Tocá tu signo del zodíaco y descubrí qué personaje de Zodi va con tu energía:</p>
+      <p>Tocá tu signo del zodíaco y descubrí qué personaje y sabor de Zodi van con tu energía:</p>
       <div class="signs-grid" id="signs-grid">
         <button class="sign-btn" data-el="fuego">♈ Aries</button>
         <button class="sign-btn" data-el="tierra">♉ Tauro</button>
@@ -1038,11 +1059,12 @@
     const ELEMENTS_DATA = {
       agua: {
         title: "AGUA",
-        tag: "Elemento Agua · Dulzura & Emoción",
+        flavorBadge: "🍓🫐 Sabor: Frutilla y arándanos",
+        tag: "Elemento Agua · 🍓🫐 Frutilla y arándanos",
         description: "Dulce, sensible y cariñosa. Siempre transmite buena energía, es soñadora y se deja llevar por sus emociones.",
         traits: ["✦ Dulce", "✦ Sensible", "✦ Cariñosa", "✦ Soñadora"],
         behavior: "Empática y luminosa; conecta desde el corazón, contagia ternura en cada encuentro y convierte cualquier momento en algo mágico.",
-        drink: "Suave, refrescante y envolvente: una bebida con notas dulces y vibrantes que abraza los sentidos igual que su buena energía.",
+        drink: "Frutilla y arándanos: una combinación dulce, frutal y envolvente que refleja su sensibilidad, ternura y buena energía.",
         signs: "Cáncer ♋ · Escorpio ♏ · Piscis ♓",
         sticker: "assets/char-agua.png",
         sparkleColor: "#ff85c2",
@@ -1050,11 +1072,12 @@
       },
       tierra: {
         title: "TIERRA",
-        tag: "Elemento Tierra · Firmeza & Equilibrio",
+        flavorBadge: "🥕🍎 Sabor: Zanahoria y manzana",
+        tag: "Elemento Tierra · 🥕🍎 Zanahoria y manzana",
         description: "Tranquilo, organizado y perseverante. Tiene una personalidad firme, es práctico y le gusta mantener todo bajo control.",
         traits: ["✦ Tranquilo", "✦ Organizado", "✦ Perseverante", "✦ Práctico"],
         behavior: "Observador, leal y constante; resuelve todo con calma, transmite seguridad a su grupo y nunca pierde el foco.",
-        drink: "Con cuerpo, equilibrada y auténtica: una esencia intensa y bien definida para quienes disfrutan sabores con carácter propio.",
+        drink: "Zanahoria y manzana: una mezcla noble, natural y equilibrada, tan práctica, firme y auténtica como su personalidad.",
         signs: "Tauro ♉ · Virgo ♍ · Capricornio ♑",
         sticker: "assets/char-tierra.png",
         sparkleColor: "#ffaa66",
@@ -1062,11 +1085,12 @@
       },
       fuego: {
         title: "FUEGO",
-        tag: "Elemento Fuego · Energía & Pasión",
+        flavorBadge: "🥭🌶️ Sabor: Mango y ají",
+        tag: "Elemento Fuego · 🥭🌶️ Mango y ají",
         description: "Enérgico, impulsivo y apasionado. Tiene un carácter fuerte, es atrevido y siempre está dispuesto a enfrentar nuevos desafíos.",
         traits: ["✦ Enérgico", "✦ Impulsivo", "✦ Apasionado", "✦ Atrevido"],
         behavior: "Pura chispa y adrenalina; toma la iniciativa sin dudar, enciende el ambiente y transforma cada plan en una aventura.",
-        drink: "Explosiva, intensa y electrizante: una bebida audaz que despierta los sentidos al instante y acompaña su ritmo imparable.",
+        drink: "Mango y ají: el dulzor tropical del mango con un toque atrevido y picante de ají; pura energía y pasión para enfrentar nuevos desafíos.",
         signs: "Aries ♈ · Leo ♌ · Sagitario ♐",
         sticker: "assets/char-fuego.png",
         sparkleColor: "#fff066",
@@ -1074,11 +1098,12 @@
       },
       aire: {
         title: "AIRE",
-        tag: "Elemento Aire · Creatividad & Chispa",
+        flavorBadge: "🍋🌿 Sabor: Limón y menta",
+        tag: "Elemento Aire · 🍋🌿 Limón y menta",
         description: "Coqueta, creativa y espontánea. Es divertida, un poco sarcástica y siempre sorprende con sus ocurrencias.",
         traits: ["✦ Coqueta", "✦ Creativa", "✦ Espontánea", "✦ Divertida"],
         behavior: "Fresca, ingeniosa y libre; rompe la rutina con su humor único, marca tendencia y hace reír a todos con sus ideas.",
-        drink: "Ligera, chispeante y súper fresca: una combinación sorprendente y original que refleja su espíritu libre y descontracturado.",
+        drink: "Limón y menta: cítrico, ultra refrescante y chispeante; una explosión de frescura creativa y espontánea que siempre sorprende.",
         signs: "Géminis ♊ · Libra ♎ · Acuario ♒",
         sticker: "assets/char-aire.png",
         sparkleColor: "#9ef066",
@@ -1117,10 +1142,12 @@
       speechCard.style.animation = "cardSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both";
       spotlightImg.parentElement.style.animation = "stickerPop 0.58s cubic-bezier(0.34, 1.56, 0.64, 1) both";
 
+      const flavorHtml = `<div class="flavor-badge">${data.flavorBadge}</div>`;
       const traitsHtml = `<div class="trait-pills">${data.traits.map(t => `<span class="trait-pill">${t}</span>`).join("")}</div>`;
       if (data.titleFirst) {
         speechCard.innerHTML = `
           <h2 class="bubble-element-title">${data.title}</h2>
+          ${flavorHtml}
           <p class="bubble-description">${data.description}</p>
           ${traitsHtml}
         `;
@@ -1128,6 +1155,7 @@
         speechCard.innerHTML = `
           <p class="bubble-description">${data.description}</p>
           <h2 class="bubble-element-title">${data.title}</h2>
+          ${flavorHtml}
           ${traitsHtml}
         `;
       }
