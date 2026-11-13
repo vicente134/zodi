@@ -973,7 +973,6 @@
           <div class="stage-controls">
             <button type="button" class="stage-btn" id="btn-prev" title="Elemento anterior">← Anterior</button>
             <button type="button" class="stage-btn" id="btn-next" title="Siguiente elemento">Siguiente →</button>
-            <button type="button" class="stage-btn" id="btn-original" title="Ver lámina original">🖼️ Lámina</button>
           </div>
         </div>
 
@@ -1033,14 +1032,6 @@
     </section>
   </main>
 
-  <!-- Modal for viewing the original slide image -->
-  <div class="original-slide-modal" id="slide-modal" role="dialog" aria-modal="true">
-    <div class="modal-inner">
-      <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
-      <img src="assets/originals/card_agua.jpg" alt="Lámina original" id="modal-img" />
-    </div>
-  </div>
-
   <script>
     const ELEMENTS_ORDER = ["agua", "tierra", "fuego", "aire"];
 
@@ -1054,7 +1045,6 @@
         drink: "Suave, refrescante y envolvente: una bebida con notas dulces y vibrantes que abraza los sentidos igual que su buena energía.",
         signs: "Cáncer ♋ · Escorpio ♏ · Piscis ♓",
         sticker: "assets/char-agua.png",
-        originalCard: "assets/originals/card_agua.jpg",
         sparkleColor: "#ff85c2",
         titleFirst: false
       },
@@ -1067,7 +1057,6 @@
         drink: "Con cuerpo, equilibrada y auténtica: una esencia intensa y bien definida para quienes disfrutan sabores con carácter propio.",
         signs: "Tauro ♉ · Virgo ♍ · Capricornio ♑",
         sticker: "assets/char-tierra.png",
-        originalCard: "assets/originals/card_tierra.jpg",
         sparkleColor: "#ffaa66",
         titleFirst: false
       },
@@ -1080,7 +1069,6 @@
         drink: "Explosiva, intensa y electrizante: una bebida audaz que despierta los sentidos al instante y acompaña su ritmo imparable.",
         signs: "Aries ♈ · Leo ♌ · Sagitario ♐",
         sticker: "assets/char-fuego.png",
-        originalCard: "assets/originals/card_fuego.jpg",
         sparkleColor: "#fff066",
         titleFirst: true
       },
@@ -1093,7 +1081,6 @@
         drink: "Ligera, chispeante y súper fresca: una combinación sorprendente y original que refleja su espíritu libre y descontracturado.",
         signs: "Géminis ♊ · Libra ♎ · Acuario ♒",
         sticker: "assets/char-aire.png",
-        originalCard: "assets/originals/card_aire.jpg",
         sparkleColor: "#9ef066",
         titleFirst: true
       }
@@ -1109,8 +1096,6 @@
     const charBehavior = document.getElementById("char-behavior");
     const charDrink = document.getElementById("char-drink");
     const charSigns = document.getElementById("char-signs");
-    const modal = document.getElementById("slide-modal");
-    const modalImg = document.getElementById("modal-img");
 
     function renderElement(key, shouldScroll = false, burstOrigin = null) {
       if (!ELEMENTS_DATA[key]) return;
@@ -1152,7 +1137,6 @@
       charBehavior.textContent = data.behavior;
       charDrink.textContent = data.drink;
       charSigns.textContent = data.signs;
-      modalImg.src = data.originalCard;
 
       if (burstOrigin) {
         spawnStarBurst(burstOrigin.x, burstOrigin.y, data.sparkleColor, 20);
@@ -1221,10 +1205,6 @@
 
     // Keyboard Left/Right arrows
     window.addEventListener("keydown", (e) => {
-      if (modal.classList.contains("open")) {
-        if (e.key === "Escape") modal.classList.remove("open");
-        return;
-      }
       if (e.key === "ArrowRight") {
         const idx = (ELEMENTS_ORDER.indexOf(currentElement) + 1) % ELEMENTS_ORDER.length;
         renderElement(ELEMENTS_ORDER[idx]);
@@ -1232,17 +1212,6 @@
         const idx = (ELEMENTS_ORDER.indexOf(currentElement) - 1 + ELEMENTS_ORDER.length) % ELEMENTS_ORDER.length;
         renderElement(ELEMENTS_ORDER[idx]);
       }
-    });
-
-    // Original slide modal
-    document.getElementById("btn-original").addEventListener("click", () => {
-      modal.classList.add("open");
-    });
-    document.getElementById("modal-close").addEventListener("click", () => {
-      modal.classList.remove("open");
-    });
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) modal.classList.remove("open");
     });
 
     spotlightImg.addEventListener("click", (e) => {
