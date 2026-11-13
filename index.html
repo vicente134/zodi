@@ -343,40 +343,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 0.25rem;
-      margin: 0.2rem 0;
+      margin: 0.25rem 0;
     }
 
     .tile-char-img {
-      width: clamp(64px, 13.5vw, 145px);
-      height: clamp(64px, 13.5vw, 145px);
+      width: clamp(78px, 16vw, 175px);
+      height: clamp(78px, 16vw, 175px);
       object-fit: contain;
       filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
       transition: transform 0.5s var(--ease-spring);
       -webkit-user-drag: none;
     }
 
-    .tile-fruit-img {
-      width: clamp(42px, 8.5vw, 92px);
-      height: clamp(42px, 8.5vw, 92px);
-      object-fit: contain;
-      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.18));
-      transition: transform 0.5s var(--ease-spring);
-      -webkit-user-drag: none;
-    }
-
-    @media (hover: hover) {
-      .element-tile:hover .tile-fruit-img {
-        transform: scale(1.14) rotate(-6deg);
-      }
-    }
-
     .element-tile.active .tile-char-img {
       animation: charBob 2.4s ease-in-out infinite;
-    }
-
-    .element-tile.active .tile-fruit-img {
-      animation: fruitBob 2.4s 0.3s ease-in-out infinite;
     }
 
     @keyframes charBob {
@@ -916,16 +896,8 @@
         align-self: center;
       }
       .tile-char-img {
-        width: 54px;
-        height: 54px;
-      }
-      .tile-fruit-img {
-        width: 36px;
-        height: 36px;
-      }
-      .tile-cta {
-        font-size: 0.56rem;
-        padding: 0.2rem 0.38rem;
+        width: 72px;
+        height: 72px;
       }
 
       /* Authentic overlapping sticker + card layout on phone screens just like her mockups */
@@ -1028,9 +1000,7 @@
           <img src="assets/title-agua.png" alt="AGUA" class="tile-title-sticker" />
           <div class="tile-char-wrap">
             <img src="assets/char-agua.png" alt="Personaje Agua" class="tile-char-img" />
-            <img src="assets/fruit-agua.png" alt="Icono fruta Agua" class="tile-fruit-img" />
           </div>
-          <span class="tile-cta">Descubrir ✦</span>
         </article>
 
         <!-- TIERRA (Naranja) -->
@@ -1038,9 +1008,7 @@
           <img src="assets/title-tierra.png" alt="TIERRA" class="tile-title-sticker" />
           <div class="tile-char-wrap">
             <img src="assets/char-tierra.png" alt="Personaje Tierra" class="tile-char-img" />
-            <img src="assets/fruit-tierra.png" alt="Icono fruta Tierra" class="tile-fruit-img" />
           </div>
-          <span class="tile-cta">Descubrir ✦</span>
         </article>
 
         <!-- FUEGO (Amarillo) -->
@@ -1048,9 +1016,7 @@
           <img src="assets/title-fuego.png" alt="FUEGO" class="tile-title-sticker" />
           <div class="tile-char-wrap">
             <img src="assets/char-fuego.png" alt="Personaje Fuego" class="tile-char-img" />
-            <img src="assets/fruit-fuego.png" alt="Icono fruta Fuego" class="tile-fruit-img" />
           </div>
-          <span class="tile-cta">Descubrir ✦</span>
         </article>
 
         <!-- AIRE (Verde) -->
@@ -1058,9 +1024,7 @@
           <img src="assets/title-aire.png" alt="AIRE" class="tile-title-sticker" />
           <div class="tile-char-wrap">
             <img src="assets/char-aire.png" alt="Personaje Aire" class="tile-char-img" />
-            <img src="assets/fruit-aire.png" alt="Icono fruta Aire" class="tile-fruit-img" />
           </div>
-          <span class="tile-cta">Descubrir ✦</span>
         </article>
       </div>
     </section>
